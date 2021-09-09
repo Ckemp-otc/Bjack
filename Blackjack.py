@@ -1,20 +1,36 @@
 import time
 import os
+import random
+
+deck = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]*4
 
 def clear():
     os.system("cls")
 
-print("Main Menu \n"
-      "\n"
-      "Game: \n"
-      " 1. Introduction \n"
-      " 2. Tutorial [WIP] \n"
-      " 3. One Player \n"
-      " 4. Player vs Player [WIP] \n"
-      "\n"
-      "Code: \n"
-      " 5. Resources \n"
-      " 6. Other Notes \n")
+def Pause(p):
+    time.sleep(p)
+
+def Menu():
+    print("Main Menu \n"
+          "\n"
+          "Game: \n"
+          " 1. Rules [WIP]\n"
+          " 2. Tutorial [WIP] \n"
+          " 3. Player vs Computer [WIP]\n"
+          " 4. Player vs Player vs Computer [WIP] \n"
+        "\nCode: [WIP]\n"
+          " 5. Resources [WIP]\n"
+          " 6. Other Notes [WIP]\n"
+        "\n 7. EXIT")
+
+
+
+
+
+while True:
+    Menu()
+    input("END")
+
 
 while True:
     try:
