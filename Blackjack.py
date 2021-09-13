@@ -2,6 +2,7 @@ import time
 import os
 import random
 
+global deck
 deck = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]*4
 
 def clear():
@@ -75,17 +76,21 @@ def Menu():
             Pause(p=1)
             quit()
 
-def Game():
+def Game(Players):
     clear()
-    print("TBD")
+    GameDeck = deck.copy()
+    for i in range(random.randint(10,200)):
+        random.shuffle(GameDeck)
+    print(deck)
+    print(GameDeck)
 
 def Score():
     clear()
-    print("TBD")
+    print("SCORE TBD")
 
 while True:
     Players = Menu()
     Game(Players=Players)
     Score()
-    input("END")
+    input("END OF CODE")
 
