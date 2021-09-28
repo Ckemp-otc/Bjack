@@ -2,11 +2,18 @@ import time
 import os
 import random
 
-os.system("Blackjack By Conner ;)")
-os.system("color 70")
+os.system("title Blackjack By Conner ;)")
+os.system("color F0")
 
 global deck
-deck = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]*4
+deck=[]
+houses=["♠","♣","♥","♦"]
+for i in range(4):
+    for j in range(13):
+        deck.append(str(j+2)+str(houses[i]))
+
+
+print(deck)
 
 def clear():
     os.system("cls")
@@ -21,16 +28,17 @@ def Menu():
         while True:
             try:
                 clear()
-                print("Game: \n"
-                      " 1. Rules [WIP] \n"
-                      " 2. Tutorial [WIP] \n"
-                      " 3. Player vs Computer [WIP] \n"
-                      " 4. Player vs Player vs Computer [WIP] \n"
-                    "\nCode: [WIP] \n"
-                      " 5. Resources [WIP]\n"
-                      " 6. Other Notes [WIP]\n"
-                    "\n 7. EXIT")
-                MenuSelect = int(input("Please input a corresponding number: "))
+                print("══════════════[ Blackjack ]═════════════ \n"
+                      " 1 | Player vs Computer [WIP] \n"
+                      " 2 | Player vs Player vs Computer [WIP] \n"
+                      "════════════════[ Help ]════════════════ \n"
+                      " 3 | Rules        [TBD] \n"
+                      " 4 | Resources    [TBD]\n"
+                      " 5 | Other Notes  [TBD]\n"
+                      "════════════════[ EXIT ]════════════════ \n"
+                      " 6 | EXIT")
+                print("\nEnter a corresponding number\n")
+                MenuSelect = int(input("|> "))
                 if MenuSelect in range(0, 8):
                     break
                 else:
@@ -40,43 +48,49 @@ def Menu():
                 print("Invalid Input")
                 Pause(p=1)
 
-        if MenuSelect == 1: # Rules
-            clear()
-            print("TBD")
-            input("Press [ENTER] to continue")
-
-        if MenuSelect == 2: # Tutorial
-            clear()
-            print("TBD")
-            input("Press [ENTER] to continue")
-
-        if MenuSelect == 3: # P Vs C
+        if MenuSelect == 1: # P Vs C
             clear()
             print("Initiating Game with 1 player")
             Pause(p=1)
             return 1
 
-        if MenuSelect == 4: # P Vs P Vs C
+        if MenuSelect == 2: # P Vs P Vs C
             clear()
             print("Initiating Game with 2 players")
             Pause(p=1)
             return 2
 
-        if MenuSelect == 5: # resources
+        if MenuSelect == 3: # Rules
             clear()
             print("TBD")
             input("Press [ENTER] to continue")
 
-        if MenuSelect == 6: # other notes
+        if MenuSelect == 4: # resources
             clear()
             print("TBD")
             input("Press [ENTER] to continue")
 
-        if MenuSelect == 7: # exit
+        if MenuSelect == 5: # other notes
+            clear()
+            print("TBD")
+            input("Press [ENTER] to continue")
+
+        if MenuSelect == 6: # exit
             clear()
             print("Goodbye")
             Pause(p=1)
             quit()
+
+def CardPrint(hand):
+
+    for i in range(hand):
+        globals()["line0"].append("\033[0;30;{} {}     ".format(BACKGROUNDCOLOUR, PRINTNUMBER))
+        globals()["line1"].append("\033[0;{};{}╔══════╗".format(TEXTCOLOUR, BACKGROUNDCOLOUR))
+        globals()["line2"].append("\033[0;{};{}║{}    ║".format(TEXTCOLOUR, BACKGROUNDCOLOUR))
+        globals()["line3"].append("\033[0;{};{}║ {} ║"  .format(TEXTCOLOUR, BACKGROUNDCOLOUR, CARDTYPE))
+        globals()["line4"].append("\033[0;{};{}║      ║".format(TEXTCOLOUR, BACKGROUNDCOLOUR, CARDCOLOUR))
+        globals()["line5"].append("\033[0;{};{}║    {}║".format(TEXTCOLOUR, BACKGROUNDCOLOUR))
+        globals()["line6"].append("\033[0;{};{}╚══════╝".format(TEXTCOLOUR, BACKGROUNDCOLOUR))
 
 
 def Game(Players):
@@ -105,6 +119,14 @@ def Game(Players):
     print("HOUSE",HOUSE)
     print("P1",(globals()["P1"]))
     print("P2",(globals()["P2"]))
+
+    GameEnded=False
+    while GameEnded==False:
+        for i in range(Players):
+            print("[{}][?]".format(HOUSE[0]))
+            for x in range(len(globals()["P"+str(i+1)])):
+                print("\r[{}]\r".format(globals()["P"+str(i+1)][x]))
+            input()
 
 
 
