@@ -82,14 +82,20 @@ def Menu():
             quit()
 
 def CardPrint(hand):
-
+    BACKGROUNDCOLOUR    =0
+    TEXTCOLOUR          =0
+    BACKGROUNDCOLOUR    =0
     for i in range(hand):
-        globals()["line0"].append("\033[0;30;{} {}     ".format(BACKGROUNDCOLOUR, PRINTNUMBER))
+        CARDHOUSE = (str(hand[i])[-1])
+        CARDCARD=0
+
+
+        globals()["line0"].append("\033[0;30;{} {}     ".format(BACKGROUNDCOLOUR, i+1))
         globals()["line1"].append("\033[0;{};{}╔══════╗".format(TEXTCOLOUR, BACKGROUNDCOLOUR))
-        globals()["line2"].append("\033[0;{};{}║{}    ║".format(TEXTCOLOUR, BACKGROUNDCOLOUR))
-        globals()["line3"].append("\033[0;{};{}║ {} ║"  .format(TEXTCOLOUR, BACKGROUNDCOLOUR, CARDTYPE))
-        globals()["line4"].append("\033[0;{};{}║      ║".format(TEXTCOLOUR, BACKGROUNDCOLOUR, CARDCOLOUR))
-        globals()["line5"].append("\033[0;{};{}║    {}║".format(TEXTCOLOUR, BACKGROUNDCOLOUR))
+        globals()["line2"].append("\033[0;{};{}║{}     ║".format(TEXTCOLOUR, BACKGROUNDCOLOUR, CARDHOUSE))
+        globals()["line3"].append("\033[0;{};{}║ {} ║"  .format(TEXTCOLOUR, BACKGROUNDCOLOUR, CARDCARD))
+        globals()["line4"].append("\033[0;{};{}║      ║".format(TEXTCOLOUR, BACKGROUNDCOLOUR))
+        globals()["line5"].append("\033[0;{};{}║     {}║".format(TEXTCOLOUR, BACKGROUNDCOLOUR, CARDHOUSE))
         globals()["line6"].append("\033[0;{};{}╚══════╝".format(TEXTCOLOUR, BACKGROUNDCOLOUR))
 
 
@@ -110,11 +116,11 @@ def Game(Players):
 
     # Deal first hands
     for i in range(0,2):
-        HOUSE.append(GameDeck[random.randint(0,len(GameDeck))])
-        GameDeck.pop(HOUSE[-1])
+        HOUSE.append(GameDeck[0])
+        GameDeck.pop(0)
         for x in range(0,Players):
-            (globals()["P"+str(x+1)]).append(GameDeck[random.randint(0,len(GameDeck))])
-            GameDeck.pop((globals()["P"+str(x+1)])[-1])
+            (globals()["P"+str(x+1)]).append(GameDeck[0])
+            GameDeck.pop(0)
 
     print("HOUSE",HOUSE)
     print("P1",(globals()["P1"]))
@@ -122,10 +128,9 @@ def Game(Players):
 
     GameEnded=False
     while GameEnded==False:
+
         for i in range(Players):
-            print("[{}][?]".format(HOUSE[0]))
-            for x in range(len(globals()["P"+str(i+1)])):
-                print("\r[{}]\r".format(globals()["P"+str(i+1)][x]))
+
             input()
 
 
