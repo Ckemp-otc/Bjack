@@ -1,6 +1,4 @@
-import time
-import os
-import random
+import time; import os; import random
 
 os.system("title Blackjack By Conner")
 os.system("color F0")  # white on black cmd
@@ -29,15 +27,15 @@ def Menu():  # main menu
         while True:
             try:
                 clear()
-                print("══════════════[ Blackjack ]═════════════ \n"
-                      " 1 | Player vs Computer [WIP] \n"
-                      " 2 | Player vs Player vs Computer [WIP] \n"
-                      "════════════════[ Help ]════════════════ \n"
-                      " 3 | Rules        [TBD] \n"
-                      " 4 | Resources    [TBD]\n"
-                      " 5 | Other Notes  [TBD]\n"
-                      "════════════════[ EXIT ]════════════════ \n"
-                      " 6 | EXIT")
+                print("\n══════════════[ Blackjack ]═════════════"
+                      "\n 1 | Player vs Computer [WIP]"
+                      "\n 2 | Player vs Player vs Computer [WIP]"
+                      "\n════════════════[ Help ]════════════════"
+                      "\n 3 | Rules        [TBD]"
+                      "\n 4 | Resources    [TBD]"
+                      "\n 5 | Other Notes  [TBD]"
+                      "\n════════════════[ EXIT ]════════════════"
+                      "\n 6 | EXIT")
                 print("\nEnter a corresponding number")
                 MenuSelect = int(input("|> "))
                 if MenuSelect in range(8): break
