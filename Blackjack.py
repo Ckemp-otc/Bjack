@@ -80,7 +80,7 @@ def CardPrint(hand, all):
     for i in range(6):
         globals()["line" + str(i)] = []
     for i in range(len(hand)):
-
+        TEXTCOLOUR=0
         CARDHOUSE = (hand[i][-1])
         if CARDHOUSE in ("♠", "♣"):
             TEXTCOLOUR = 30  # Black
@@ -107,11 +107,12 @@ def CardPrint(hand, all):
     for i in range(6):
         globals()["CLEANline" + str(i)] = ""
     for x in range(6):
-        for z in range(0, len(globals()["line" + str(x)])):
+        for z in range(len(globals()["line" + str(x)])):
             globals()["CLEANline" + str(x)] = globals()["CLEANline" + str(x)] + globals()["line" + str(x)][z]
         print(globals()["CLEANline" + str(x)])
 
 def Game(Players):
+    for i in range(len)
     (globals()["P1"]) = []
     (globals()["P2"]) = []
     (globals()["P1score"]) = []
@@ -129,10 +130,10 @@ def Game(Players):
     Pause(p=0.5)
 
     # Deal first hands
-    for i in range(0, 2):
+    for i in range(2):
         HOUSE.append(GameDeck[0])
         GameDeck.pop(0)
-        for x in range(0, Players):
+        for x in range(Players):
             (globals()["P"+str(x + 1)]).append(GameDeck[0])
             GameDeck.pop(0)
 
@@ -161,11 +162,21 @@ def Game(Players):
     while True:
         # player turn
         for x in range(players):
-            print("House's Hand"); CardPrint(hand=HOUSE, all=False)
-            print("Your Hand:  Score: {}".format(globals()["P" + str(x + 1) + "score"])); CardPrint(hand=globals()["P" + str(x + 1)], all=True)
-            print("[1]Hit or [2]stand")
             while True:
-                input("|> ")
+                print()
+                try:
+                    print("House's Hand");
+                    CardPrint(hand=HOUSE, all=False)
+                    print("Your Hand:  Score: {}".format(globals()["P" + str(x + 1) + "score"]));
+                    CardPrint(hand=globals()["P" + str(x + 1)], all=True)
+                    print("[1]Hit or [2]stand")
+                    Action = input("|> ")
+                    if (Action.lower() in ["1","h"]):
+                        print("deal")
+                        break
+
+                except:
+                    print("Error")
 
     print("HOUSE", HOUSE)
     print("P1", (globals()["P1"]))
